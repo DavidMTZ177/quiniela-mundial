@@ -7,7 +7,7 @@
    ========================================================================= */
 window.QUINIELA_CONFIG = {
   // Tu contraseña de administrador (pestaña "Admin")
-  adminPassword: "admin2026",
+  adminPassword: "D4v1ch0!!!",
 
   // Número de WhatsApp del organizador (a donde llegan las quinielas). Solo dígitos, con clave país.
   whatsappNumber: "525535007707",
