@@ -9,7 +9,10 @@ window.QUINIELA_CONFIG = {
   // Tu contraseña de administrador (pestaña "Admin")
   adminPassword: "admin2026",
 
-  // Supabase — déjalas vacías para modo demo, o pégalas para multijugador real
-  supabaseUrl: "",
-  supabaseKey: ""
+  // Número de WhatsApp del organizador (a donde llegan las quinielas). Solo dígitos, con clave país.
+  whatsappNumber: "525535007707",
+
+  // Supabase (multijugador real)
+  supabaseUrl: "https://ybckciqgbhvkeqnvzzrx.supabase.co",
+  supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InliY2tjaXFnYmh2a2VxbnZ6enJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2MTA5NTksImV4cCI6MjA5ODE4Njk1OX0._wsJbBqkSI1AbUle3ZCKb3ban4UzSYa4UAqKR8YDS8U"
 };
