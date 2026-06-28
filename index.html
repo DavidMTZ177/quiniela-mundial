@@ -318,6 +318,17 @@ var SB = null, DEMO = true;
   }
 })();
 
+// Cierres por tiempo (hora MX)
+var REG_DEADLINE = new Date((window.QUINIELA_CONFIG && window.QUINIELA_CONFIG.registrationDeadline) || '2026-06-28T12:30:00-06:00');
+var PHASE_DEADLINES = (window.QUINIELA_CONFIG && window.QUINIELA_CONFIG.phaseDeadlines) || {};
+function phaseDeadline(p){
+  if (PHASE_DEADLINES[p.id]) return new Date(PHASE_DEADLINES[p.id]);
+  try { var f=p.matches[0]; return new Date(f.date+'T'+f.time+':00-06:00'); } catch(e){ return null; }
+}
+function phaseClosedByTime(p){ var d=phaseDeadline(p); return d ? (Date.now() > d.getTime()) : false; }
+function regClosed(){ return Date.now() > REG_DEADLINE.getTime(); }
+function fmtDeadline(d){ try{ return d.toLocaleString('es-MX',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+
 /* =========================================================================
    FIXTURES — bracket oficial FIFA (Mundial 2026)
    ids = numero de cruce oficial. Octavos+ traen slots (Ganador X) que el
@@ -418,12 +429,14 @@ var DB = {
     if (DEMO){
       var users = ls('q26_users', {});
       if (users[key]){ if (users[key].hash !== hash) return {ok:false, err:'Contrasena incorrecta'}; return {ok:true, isNew:false, name:users[key].name}; }
+      if (regClosed()) return {ok:false, err:'Los registros cerraron. Ya no es posible unirse a la quiniela.'};
       users[key] = {name:name.trim(), hash:hash}; lsSet('q26_users', users);
       return {ok:true, isNew:true, name:name.trim()};
     }
     var sel = await SB.from('participantes').select('nombre,pass_hash').eq('nombre_key', key).maybeSingle();
     if (sel.error) return {ok:false, err:sel.error.message};
     if (sel.data){ if (sel.data.pass_hash !== hash) return {ok:false, err:'Contrasena incorrecta'}; return {ok:true, isNew:false, name:sel.data.nombre}; }
+    if (regClosed()) return {ok:false, err:'Los registros cerraron. Ya no es posible unirse a la quiniela.'};
     var ins = await SB.from('participantes').insert({nombre:name.trim(), nombre_key:key, pass_hash:hash});
     if (ins.error) return {ok:false, err:ins.error.message};
     return {ok:true, isNew:true, name:name.trim()};
@@ -574,6 +587,10 @@ function renderQuiniela(){
     html += '<div class="banner banner-closed"><h3>'+phase.name+' aun no disponible</h3><p>Esta fase se abrira cuando el admin defina los cruces. Por ahora llena las fases abiertas.</p></div>';
     c.innerHTML=html; return;
   }
+  if (phaseClosedByTime(phase) && !locked){
+    html += '<div class="banner banner-closed"><h3>'+phase.name+' cerrada</h3><p>El plazo para enviar marcadores de esta fase ya termino. Los partidos ya iniciaron.</p></div>';
+    c.innerHTML=html; return;
+  }
   if (locked){
     html += '<div class="banner banner-locked"><h3>&#10004; '+phase.name+' enviada y bloqueada</h3><p>Tus pronosticos quedaron guardados. Ya no se pueden modificar.</p></div>';
   }
@@ -617,7 +634,7 @@ function renderQuiniela(){
       '<div class="progress-fill-wrap"><div class="progress-fill" id="pFill"></div></div></div>';
     html += '<div class="submit-section"><button class="submit-btn" id="submitBtn" onclick="submitPhase()">Enviar '+phase.name+'</button>'+
       '<div class="status-msg" id="submitStatus"></div>'+
-      '<p style="color:var(--text-dim);font-size:0.75rem;margin-top:10px;">Una vez enviada no podras cambiar esta fase.</p></div>';
+      '<p style="color:var(--text-dim);font-size:0.75rem;margin-top:10px;">Una vez enviada no podras cambiar esta fase.'+(phaseDeadline(phase)?' Cierre: '+fmtDeadline(phaseDeadline(phase))+' (hora MX).':'')+'</p></div>';
   }
   c.innerHTML=html;
   if (!locked) updatePhaseProgress();
@@ -640,6 +657,7 @@ function updatePhaseProgress(){
 
 async function submitPhase(){
   var phase=PHASES.filter(function(p){return p.id===activePhase;})[0];
+  if (phaseClosedByTime(phase)){ showToast('Esta fase ya cerro, no se pueden enviar marcadores.'); renderQuiniela(); return; }
   var obj={}, missing=0;
   phase.matches.forEach(function(m){
     var l=document.getElementById('sl-'+m.id).value, v=document.getElementById('sv-'+m.id).value;

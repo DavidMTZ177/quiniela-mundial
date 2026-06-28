@@ -12,6 +12,14 @@ window.QUINIELA_CONFIG = {
   // Número de WhatsApp del organizador (a donde llegan las quinielas). Solo dígitos, con clave país.
   whatsappNumber: "525535007707",
 
+  // Cierre de registros nuevos (hora de México, -06:00). Después de esto nadie nuevo puede unirse.
+  registrationDeadline: "2026-06-28T12:30:00-06:00",
+
+  // Cierre de envío de marcadores por fase (hora MX). Después de la hora, esa fase ya no acepta envíos.
+  phaseDeadlines: {
+    r32: "2026-06-28T12:30:00-06:00"
+  },
+
   // Supabase (multijugador real)
   supabaseUrl: "https://ybckciqgbhvkeqnvzzrx.supabase.co",
   supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InliY2tjaXFnYmh2a2VxbnZ6enJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2MTA5NTksImV4cCI6MjA5ODE4Njk1OX0._wsJbBqkSI1AbUle3ZCKb3ban4UzSYa4UAqKR8YDS8U"
