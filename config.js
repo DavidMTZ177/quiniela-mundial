@@ -13,11 +13,11 @@ window.QUINIELA_CONFIG = {
   whatsappNumber: "525535007707",
 
   // Cierre de registros nuevos (hora de México, -06:00). Después de esto nadie nuevo puede unirse.
-  registrationDeadline: "2026-06-28T12:30:00-06:00",
+  registrationDeadline: "2026-06-29T11:00:00-06:00",
 
   // Cierre de envío de marcadores por fase (hora MX). Después de la hora, esa fase ya no acepta envíos.
   phaseDeadlines: {
-    r32: "2026-06-28T12:30:00-06:00"
+    r32: "2026-06-29T11:00:00-06:00"
   },
 
   // Supabase (multijugador real)
