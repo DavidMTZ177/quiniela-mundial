@@ -1,0 +1,40 @@
+{
+  "matches": [
+    {"id":73,"phase":"r32","home":"Sudafrica","away":"Canada","date":"2026-06-28"},
+    {"id":76,"phase":"r32","home":"Brasil","away":"Japon","date":"2026-06-29"},
+    {"id":74,"phase":"r32","home":"Alemania","away":"Paraguay","date":"2026-06-29"},
+    {"id":75,"phase":"r32","home":"Paises Bajos","away":"Marruecos","date":"2026-06-29"},
+    {"id":78,"phase":"r32","home":"Costa de Marfil","away":"Noruega","date":"2026-06-30"},
+    {"id":77,"phase":"r32","home":"Francia","away":"Suecia","date":"2026-06-30"},
+    {"id":79,"phase":"r32","home":"Mexico","away":"Ecuador","date":"2026-06-30"},
+    {"id":80,"phase":"r32","home":"Inglaterra","away":"RD Congo","date":"2026-07-01"},
+    {"id":82,"phase":"r32","home":"Belgica","away":"Senegal","date":"2026-07-01"},
+    {"id":81,"phase":"r32","home":"Estados Unidos","away":"Bosnia","date":"2026-07-01"},
+    {"id":84,"phase":"r32","home":"Espana","away":"Austria","date":"2026-07-02"},
+    {"id":83,"phase":"r32","home":"Portugal","away":"Croacia","date":"2026-07-02"},
+    {"id":85,"phase":"r32","home":"Suiza","away":"Argelia","date":"2026-07-02"},
+    {"id":88,"phase":"r32","home":"Australia","away":"Egipto","date":"2026-07-03"},
+    {"id":86,"phase":"r32","home":"Argentina","away":"Cabo Verde","date":"2026-07-03"},
+    {"id":87,"phase":"r32","home":"Colombia","away":"Ghana","date":"2026-07-03"},
+
+    {"id":90,"phase":"r16","home":"Ganador 73","away":"Ganador 75","date":"2026-07-04"},
+    {"id":89,"phase":"r16","home":"Ganador 74","away":"Ganador 77","date":"2026-07-04"},
+    {"id":91,"phase":"r16","home":"Ganador 76","away":"Ganador 78","date":"2026-07-05"},
+    {"id":92,"phase":"r16","home":"Ganador 79","away":"Ganador 80","date":"2026-07-05"},
+    {"id":93,"phase":"r16","home":"Ganador 83","away":"Ganador 84","date":"2026-07-06"},
+    {"id":94,"phase":"r16","home":"Ganador 81","away":"Ganador 82","date":"2026-07-06"},
+    {"id":95,"phase":"r16","home":"Ganador 86","away":"Ganador 88","date":"2026-07-07"},
+    {"id":96,"phase":"r16","home":"Ganador 85","away":"Ganador 87","date":"2026-07-07"},
+
+    {"id":97,"phase":"qf","home":"Ganador 89","away":"Ganador 90","date":"2026-07-09"},
+    {"id":98,"phase":"qf","home":"Ganador 93","away":"Ganador 94","date":"2026-07-10"},
+    {"id":99,"phase":"qf","home":"Ganador 91","away":"Ganador 92","date":"2026-07-11"},
+    {"id":100,"phase":"qf","home":"Ganador 95","away":"Ganador 96","date":"2026-07-11"},
+
+    {"id":101,"phase":"sf","home":"Ganador 97","away":"Ganador 98","date":"2026-07-14"},
+    {"id":102,"phase":"sf","home":"Ganador 99","away":"Ganador 100","date":"2026-07-15"},
+
+    {"id":103,"phase":"tp","home":"Perdedor 101","away":"Perdedor 102","date":"2026-07-18"},
+    {"id":104,"phase":"f","home":"Ganador 101","away":"Ganador 102","date":"2026-07-19"}
+  ]
+}
